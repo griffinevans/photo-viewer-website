@@ -8,20 +8,20 @@ Please follow the instructions below and fill in the information requested when 
 
 ## Student Information
 
-|               | Information   |
-|:-------------:|:-------------:|
-| Student Name  | name-here     |
-| Student ID    | id-here       |
-| Student Email | email-here    |
-
-
+|               |   Information    |
+| :-----------: | :--------------: |
+| Student Name  |  Griffin Evans   |
+|  Student ID   |    922498210     |
+| Student Email | gevans3@sfsu.edu |
 
 # Build/Run Instructions
 
 ## Build Instructions
+
 1. steps here
 2. steps here
 
 ## Run Instructions
+
 1. steps here
-2. steps here 
+2. steps here
