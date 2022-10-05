@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <title>Register</title>
   </head>
   <body>
-    <nav>
+    <nav class="navbar">
       <a href="index.html">Index</a>
       <a href="login.html">Login</a>
       <a href="registration.html">Registration</a>
@@ -12,41 +13,27 @@
       <a href="viewpost.html">View Post</a>
     </nav>
 
-    <h1>Register</h1>
-    <section>
-      <form>
-        <label>
-          Username:
-          <input type="text" name="username" />
-        </label>
-        <br />
-        <label>
-          Email Address:
-          <input type="text" name="email" />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input type="password" name="password" />
-        </label>
-        <br />
-        <label>
-          Confirm Password:
-          <input type="password" name="confirmPassword" />
-        </label>
-        <br />
-        <label>
-          I am 13+ years old
-          <input type="checkbox" name="confirmAge" />
-        </label>
-        <br />
-        <label>
-          I accept the <a href="">TOS</a> and <a href="">Privacy Policy</a>
-          <input type="checkbox" name="tos" />
-        </label>
-        <br />
-        <button>Submit</button>
-      </form>
-    </section>
+    <main>
+      <section class="card">
+        <h1 class="title">Register</h1>
+        <form class="form-field">
+          <label for="username"> Username: </label>
+          <input type="text" id="username" name="username" />
+          <label for="email"> Email Address: </label>
+          <input type="text" id="email" name="email" />
+          <label for="password"> Password: </label>
+          <input type="password" id="password" name="password" />
+          <label for="confirmPassword"> Confirm Password: </label>
+          <input type="password" id="confirmPassword" name="confirmPassword" />
+          <label for="confirmAge"> I am 13+ years old </label>
+          <input type="checkbox" id="confirmAge" name="confirmAge" />
+          <label for="tos">
+            I accept the <a href="">TOS</a> and <a href="">Privacy Policy</a>
+          </label>
+          <input type="checkbox" id="tos" name="tos" />
+          <button>Submit</button>
+        </form>
+      </section>
+    </main>
   </body>
 </html>
