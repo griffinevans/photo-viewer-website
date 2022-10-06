@@ -24,7 +24,7 @@ body {
   width: 100%;
 }
 
-.navbar {
+nav {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -33,7 +33,7 @@ body {
   border-bottom: 4px solid var(--rust);
 }
 
-.navbar > a {
+nav > a {
   font: 18px;
   padding: 15px solid var(--darkorange);
   display: flex;
@@ -46,7 +46,7 @@ body {
   max-width: 400px;
 }
 
-.navbar > a:hover {
+nav > a:hover {
   transition: 0.3s;
   color: var(--white);
   box-shadow: 2px 2px 0px 0px var(--brown);
@@ -64,6 +64,7 @@ body {
   width: 40%;
   text-align: center;
   margin-top: 5%;
+  max-width: 400px;
 }
 
 .card > img {
@@ -102,7 +103,7 @@ body {
   border-radius: 10px;
 }
 
-.footer {
+footer {
   position: fixed;
   bottom: 0;
   background-color: var(--darkorange);
@@ -114,13 +115,12 @@ body {
 }
 
 .spacey-quote {
-  margin: auto;
   font-size: 1.3em;
   padding: 20px;
   margin-bottom: 40px;
-  margin-left: 8%;
-  margin-right: 8%;
   color: darkred;
+  max-width: 800px;
+  margin: auto;
 }
 
 .spacey-quote > * {
