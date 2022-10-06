@@ -64,6 +64,7 @@ body {
   width: 40%;
   text-align: center;
   margin-top: 5%;
+  max-width: 400px;
 }
 
 .card > img {
@@ -114,13 +115,12 @@ body {
 }
 
 .spacey-quote {
-  margin: auto;
   font-size: 1.3em;
   padding: 20px;
   margin-bottom: 40px;
-  margin-left: 8%;
-  margin-right: 8%;
   color: darkred;
+  max-width: 800px;
+  margin: auto;
 }
 
 .spacey-quote > * {
