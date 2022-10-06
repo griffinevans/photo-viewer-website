@@ -30,7 +30,7 @@ body {
   justify-content: space-around;
   background-color: var(--darkorange);
   padding: 0.5%;
-  border-bottom: 4px solid var(--dark);
+  border-bottom: 4px solid var(--rust);
 }
 
 .navbar > a {
@@ -38,23 +38,25 @@ body {
   padding: 15px solid var(--darkorange);
   display: flex;
   color: var(--white);
+  background: var(--rust);
+  padding: 0.5%;
   text-align: center;
   transition: background 0.25s, box-shadow 0.15s;
   border-radius: 5px;
+  max-width: 400px;
 }
 
 .navbar > a:hover {
   transition: 0.3s;
   color: var(--white);
-  background: var(--rust);
-  padding: 0.5%;
-  box-shadow: 0px 4px 0px 0px var(--brown);
+  box-shadow: 2px 2px 0px 0px var(--brown);
   filter: drop-shadow(4px 4px 4px var(--rust));
 }
 
 .card {
+  animation: 0.5s ease-out 0s 1 slideIn;
   border-radius: 25px;
-  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  box-shadow: 0px 14px 80px rgba(64, 35, 58, 0.2);
   padding: 1%;
   overflow: hidden;
   margin-left: auto;
@@ -64,14 +66,23 @@ body {
   margin-top: 5%;
 }
 
+.card > img {
+  box-shadow: 0px 4px 8px rgba(34, 35, 58, 1.2);
+  border-radius: 4px;
+}
+
 .indexMain {
-  margin: 20px;
+  animation: 0.5s ease-out 0s 1 slideIn;
+  margin-top: 5%;
   border-radius: 25px;
-  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
   display: flex;
   flex-direction: row-reverse;
-  padding: 10px;
+  padding: 1%;
   align-items: center;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mainText {
@@ -79,6 +90,7 @@ body {
   text-align: center;
   width: 80%;
   font-size: 1.2em;
+  color: var(--brown);
 }
 
 .splash > img {
@@ -86,8 +98,8 @@ body {
   max-width: 100%;
   margin: auto;
   float: right;
-  border-radius: 25px;
-  box-shadow: 4px 13px 30px 1px rgba(159, 82, 5, 0.4);
+  box-shadow: 0px 4px 8px rgba(34, 35, 58, 1.2);
+  border-radius: 10px;
 }
 
 .footer {
@@ -98,6 +110,7 @@ body {
   justify-content: space-around;
   align-items: center;
   width: 100%;
+  padding-top: 0.5%;
 }
 
 .spacey-quote {
@@ -143,4 +156,13 @@ body {
 .form-field > label {
   color: var(--brown);
   box-shadow: none;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
