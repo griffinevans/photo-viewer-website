@@ -6,7 +6,7 @@
   </head>
 
   <body>
-    <nav class="navbar">
+    <nav>
       <a href="index.html">Index</a>
       <a href="login.html">Login</a>
       <a href="registration.html">Registration</a>
@@ -27,11 +27,13 @@
           name="image"
           accept="image/png, image/jpeg, image/webp"
         />
-        <label for="tos">
-          Acknowledge you have read and understood the
-          <a href="">Acceptable Use Policy</a>
-        </label>
-        <input type="checkbox" id="tos" name="tos" />
+        <div>
+          <input type="checkbox" id="tos" name="tos" />
+          <label for="tos">
+            Acknowledge you have read and understood the
+            <a href="">Acceptable Use Policy</a>
+          </label>
+        </div>
         <button>Upload</button>
       </form>
     </section>
