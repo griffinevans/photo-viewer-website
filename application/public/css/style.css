@@ -30,7 +30,7 @@ body {
   justify-content: space-around;
   background-color: var(--darkorange);
   padding: 0.5%;
-  border-bottom: 4px solid var(--rust);
+  border-bottom: 4px solid var(--dark);
 }
 
 .navbar > a {
@@ -62,7 +62,6 @@ body {
   width: 40%;
   text-align: center;
   margin-top: 5%;
-  max-width: 400px;
 }
 
 .indexMain {
@@ -106,8 +105,9 @@ body {
   font-size: 1.3em;
   padding: 20px;
   margin-bottom: 40px;
+  margin-left: 8%;
+  margin-right: 8%;
   color: darkred;
-  max-width: 800px;
 }
 
 .spacey-quote > * {
