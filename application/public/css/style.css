@@ -103,7 +103,7 @@ nav > a:hover {
   border-radius: 10px;
 }
 
-.footer {
+footer {
   position: fixed;
   bottom: 0;
   background-color: var(--darkorange);
