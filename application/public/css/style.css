@@ -153,6 +153,10 @@ footer {
   padding: 0.4rem 1rem;
 }
 
+.form-field > .checkbox {
+  box-shadow: none;
+}
+
 .form-field > label {
   color: var(--brown);
   box-shadow: none;
