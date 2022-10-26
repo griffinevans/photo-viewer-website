@@ -44,7 +44,8 @@ const checkPassword = (pass, cpass) => {
   const pwd = pass.value;
   const cpwd = cpass.value;
   let valid = false;
-  const regex = /[/*-+!@#$^&~\[\]]/;
+  //at least one uppercase letter, digit, and special char
+  const regex = /(?=.*\d)(?=.*[A-Z])(?=.*[/*-+!@#$^&~\[\]])/;
   const minLength = 8;
   let errorMsg = "";
   if (pwd.length < minLength) {
@@ -65,10 +66,13 @@ const checkPassword = (pass, cpass) => {
 }
 
 const checkEmail = (email) => {
+  let valid = false;
   if (email.validity.typeMismatch) {
     email.setCustomValidity("Invalid email.");
     email.reportValidity();
   } else {
     email.setCustomValidity("");
+    valid = true;
   }
+  return valid;
 }
