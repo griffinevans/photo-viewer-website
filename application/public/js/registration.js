@@ -3,15 +3,16 @@ const submit = document.getElementById("submit");
 submit.addEventListener("click",validate);
 
 function validate(e) {
-  e.preventDefault();
   const username = document.getElementById("username");
   const pass = document.getElementById("password");
   const cpass = document.getElementById("confirmPassword");
   const email = document.getElementById("email");
+  const cAge = document.getElementById("confirmAge");
+  const tos = document.getElementById("tos");
   //TODO TOS and confirmAge
-  if(checkUsername(username) && checkPassword(pass,cpass) && checkEmail(email)) {
-    window.alert("Registered!");
-  }
+  if( !checkUsername(username) || !checkPassword(pass,cpass) || !checkEmail(email) || !checkAge(cAge) || !checkTOS(tos)) {
+    e.preventDefault();
+  } 
 }
 
 const checkUsername = (username) => {
@@ -76,3 +77,24 @@ const checkEmail = (email) => {
   }
   return valid;
 }
+
+const checkTOS = (tos) => {
+  if(tos.validity.valueMissing) {
+    tos.setCustomValidity("Accept the TOS and Privacy Policy to continue");
+    tos.reportValidity();
+    return false;
+  }
+  tos.setCustomValidity("");
+  return true;
+}
+
+const checkAge = (cAge) => {
+  if(cAge.validity.valueMissing) {
+    cAge.setCustomValidity("Confirm your age to continue");
+    cAge.reportValidity();
+    return false;
+  }
+  cAge.setCustomValidity("");
+  return true;
+}
+
