@@ -77,30 +77,28 @@ nav > a:hover {
   margin-top: 5%;
   border-radius: 25px;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
-  display: flex;
-  flex-direction: row-reverse;
   padding: 1%;
-  align-items: center;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.mainText {
-  padding: 20px;
-  text-align: center;
-  width: 80%;
-  font-size: 1.2em;
-  color: var(--brown);
+.splash {
+  display: flex;
+  flex: 0 0 25%;
+  flex-wrap: wrap;
 }
 
 .splash > img {
-  font: monospace;
-  max-width: 100%;
-  margin: auto;
-  float: right;
   box-shadow: 0px 4px 8px rgba(34, 35, 58, 1.2);
   border-radius: 10px;
+  object-fit: contain;
+  max-width: 33%;
+  min-width: 20%;
+}
+
+.splash > img > p {
+  font-size: 80px;
 }
 
 footer {
