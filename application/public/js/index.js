@@ -20,14 +20,11 @@ fetch('https://jsonplaceholder.typicode.com/albums/2/photos')
   }))
   .then(() => {
     const tiles = document.querySelectorAll(".fadingTile");
-    console.log(tiles);
     tiles.forEach( (tile) => {
-      tile.addEventListener('click', (e) => {
+      tile.addEventListener('click', () => {
         tile.style.opacity = 0;
         count.innerText--;
       });
-      tile.addEventListener('transitioned', (e) => {
-        tile.remove();
-      });
+      tile.addEventListener('transitionend', () => tile.remove());
     });
   });
