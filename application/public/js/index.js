@@ -23,8 +23,10 @@ fetch('https://jsonplaceholder.typicode.com/albums/2/photos')
     tiles.forEach( (tile) => {
       tile.addEventListener('click', () => {
         tile.style.opacity = 0;
+      });
+      tile.addEventListener('transitionend', () => { 
+        tile.remove();
         count.innerText--;
       });
-      tile.addEventListener('transitionend', () => tile.remove());
     });
   });
