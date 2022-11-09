@@ -11,7 +11,7 @@ class ViewPost extends React.Component {
             <h2>Justice</h2>
             <p>+1 The lieutenant trusts you.<br />+2 Kim *truly* trusts you.</p>
             <p>March 4th, '51</p>
-            //<img src="../images/Portrait_kitsuragi.png" />
+            <img src="../images/Portrait_kitsuragi.png" />
           </section>
         </main>
       </body>
