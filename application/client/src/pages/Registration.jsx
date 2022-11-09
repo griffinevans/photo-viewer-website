@@ -1,19 +1,11 @@
+import React from 'react';
+import Navbar from '../components/Navbar';
+
 class Registration extends React.Component {
   render() {
-    <html>
-      <head>
-        <link rel="stylesheet" type="text/css" href="../css/style.css" />
-        <title>Register</title>
-        <script defer type="text/javascript" src="../js/registration.js"> </script>
-      </head>
+    return (
       <body>
-        <nav>
-          <a href="index.html">Index</a>
-          <a href="login.html">Login</a>
-          <a href="registration.html">Registration</a>
-          <a href="postimage.html">Post Image</a>
-          <a href="viewpost.html">View Post</a>
-        </nav>
+      <Navbar />
     
         <main>
           <section class="card">
@@ -42,6 +34,8 @@ class Registration extends React.Component {
           </section>
         </main>
       </body>
-    </html>
+    );
   }
 }
+
+export default Registration;

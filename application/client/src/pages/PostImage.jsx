@@ -1,19 +1,11 @@
+import React from 'react';
+import Navbar from '../components/Navbar';
+
 class PostImage extends React.Component {
   render() {
-    <html>
-      <head>
-        <link rel="stylesheet" type="text/css" href="../css/style.css" />
-        <title>Post Image</title>
-      </head>
-    
-      <body>
-        <nav>
-          <a href="index.html">Index</a>
-          <a href="login.html">Login</a>
-          <a href="registration.html">Registration</a>
-          <a href="postimage.html">Post Image</a>
-          <a href="viewpost.html">View Post</a>
-        </nav>
+    return(
+      <div>
+        <Navbar />
         <section class="card">
           <h1>Upload Image</h1>
           <form class="form-field">
@@ -38,7 +30,9 @@ class PostImage extends React.Component {
             <button>Upload</button>
           </form>
         </section>
-      </body>
-    </html>
+      </div>
+    );
   }
 }
+
+export default PostImage;

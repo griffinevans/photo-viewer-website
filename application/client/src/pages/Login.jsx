@@ -1,22 +1,11 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
 
 class Login extends React.Component {
   render() {
     return (
-    <html>
-      <head>
-        <link rel="stylesheet" type="text/css" href="../css/style.css" />
-        <title>Log In</title>
-      </head>
-    
-      <body>
-        <nav>
-          <a href="index.html">Index</a>
-          <a href="login.html">Login</a>
-          <a href="registration.html">Registration</a>
-          <a href="postimage.html">Post Image</a>
-          <a href="viewpost.html">View Post</a>
-        </nav>
+      <div>
+        <Navbar />
         <main>
           <section class="spacey-quote">
             <h1>UN JOUR JE SERAI DE RETOUR PRES DE TOI</h1>
@@ -32,8 +21,7 @@ class Login extends React.Component {
             </form>
           </section>
         </main>
-      </body>
-    </html>
+      </div>
     );
   }
 }

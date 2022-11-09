@@ -4,7 +4,7 @@ class Navbar extends React.Component {
   render() {
     return (
       <nav>
-        <a href="index">Index</a>
+        <a href="/">Index</a>
         <a href="login">Login</a>
         <a href="registration">Registration</a>
         <a href="postimage">Post Image</a>
