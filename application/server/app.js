@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
-const port = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -20,7 +20,6 @@ app.use("/public", express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter); // route middleware from ./routes/index.js
 app.use("/users", usersRouter); // route middleware from ./routes/users.js
-
 
 
 /**
