@@ -21,10 +21,6 @@ class Header extends React.Component {
       </header>
     );
   }
-
-  componentDidMount() {
-
-  }
 }
 
 export default Header;

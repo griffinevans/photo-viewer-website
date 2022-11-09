@@ -1,18 +1,13 @@
-import Header from './Header';
-import Footer from './Footer';
-import Navbar from './Navbar';
 import React from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
+import '../styles/style.css';
 
 class Index extends React.Component {
   render() {
     return (
-    <html>
-      <head>
-        <link rel="stylesheet" type="text/css" href="../css/style.css" />
-        <title>Index</title>
-        <script defer type="text/javascript" src="../js/index.js"> </script>
-      </head>
-      <body className="index">
+      <div className="index">
         <Header />
         <Navbar />
         <main id="indexMain" className="indexMain">
@@ -23,20 +18,19 @@ class Index extends React.Component {
           </section>
         </main>
         <Footer />
-      </body>
-    </html>
+      </div>
     );
   }
 
   componentDidMount() {
+    console.log("mounted");
     let count = document.getElementById("postCounter");
-    fetch('https://jsonplaceholder.typicode.com/albums/2/photos')
+    fetch("/api")
       .then((response) => response.json())
       .then((data) => data.forEach(file => {
         //add images and title to div
         let div = document.createElement("div");
         div.classList.add("fadingTile");
-
 
         let img = document.createElement("img");
         img.src = file["url"];
