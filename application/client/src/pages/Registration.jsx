@@ -5,12 +5,16 @@ class Registration extends React.Component {
   render() {
     return (
       <body>
-      <Navbar />
-    
+        <Navbar />
+
         <main>
           <section class="card">
             <h1 class="title">Register</h1>
-            <form id="register" class="form-field">
+            <form id="register" class="form-field"
+              method="POST"
+              action="/users/register"
+              enctype="application/x-www-form-urlencoded">
+
               <label for="username"> Username: </label>
               <input type="text" id="username" name="username" />
               <label for="email"> Email Address: </label>
@@ -20,11 +24,11 @@ class Registration extends React.Component {
               <label for="confirmPassword"> Confirm Password: </label>
               <input type="password" id="confirmPassword" name="confirmPassword" />
               <div class="checkbox">
-                <input type="checkbox" id="confirmAge" name="confirmAge" required="required" />
+                <input type="checkbox" id="confirmAge" name="confirmAge" />
                 <label for="confirmAge"> I am 13+ years old </label>
               </div>
               <div class="checkbox">
-                <input type="checkbox" id="tos" name="tos" required />
+                <input type="checkbox" id="tos" name="tos" />
                 <label for="tos">
                   I accept the <a href="">TOS</a> and <a href="">Privacy Policy</a>
                 </label>
@@ -40,19 +44,21 @@ class Registration extends React.Component {
   componentDidMount() {
     const regForm = document.forms[0];
     const submit = document.getElementById("submit");
-    submit.addEventListener("click",validate);
+    //submit.addEventListener("click",validate);
 
     function validate(e) {
+      /*
       const username = document.getElementById("username");
       const pass = document.getElementById("password");
       const cpass = document.getElementById("confirmPassword");
       const email = document.getElementById("email");
       const cAge = document.getElementById("confirmAge");
       const tos = document.getElementById("tos");
-      //TODO TOS and confirmAge
+
       if( !checkUsername(username) || !checkPassword(pass,cpass) || !checkEmail(email) || !checkAge(cAge) || !checkTOS(tos)) {
         e.preventDefault();
       } 
+      */
     }
 
     const checkUsername = (username) => {
