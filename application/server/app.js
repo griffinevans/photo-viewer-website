@@ -4,19 +4,39 @@ const favicon = require('serve-favicon');
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const PORT = process.env.PORT || 3001;
+const session = require("express-session");
+const MySQLStore = require("express-mysql-session")(session);
+
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
-const PORT = process.env.PORT || 3001;
 
 const app = express();
+
+const sessionStore = new MySQLStore({},require('./database.js'));
+
+app.use(
+  session({
+    key: "csid",
+    secret: "csc317 secret",
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser("csc317 secret"));
 
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use("/public", express.static(path.join(__dirname, "public")));
+
+app.use(function(req,res,next) {
+  console.log(req.session);
+  next();
+});
 
 app.use("/", indexRouter); // route middleware from ./routes/index.js
 app.use("/users", usersRouter); // route middleware from ./routes/users.js
@@ -28,14 +48,14 @@ app.use("/users", usersRouter); // route middleware from ./routes/users.js
  */
 app.use((req,res,next) => {
   next(createError(404, `The route ${req.method} : ${req.url} does not exist.`));
-})
+});
   
 
 /**
  * Error Handler, used to render the error html file
  * with relevant error information.
  */
-app.use(function (err, req, res, next) {
+app.use( (err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = err;
   console.log(err);
