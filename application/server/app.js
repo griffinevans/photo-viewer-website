@@ -10,6 +10,7 @@ const MySQLStore = require("express-mysql-session")(session);
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+const apiRouter = require("./routes/api.js");
 
 const app = express();
 
@@ -33,12 +34,17 @@ app.use(cookieParser("csc317 secret"));
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use("/public", express.static(path.join(__dirname, "public")));
 
-app.use(function(req,res,next) {
+app.use((req,res,next) => {
   console.log(req.session);
+  if(req.session.username) {
+    res.locals.isLoggedIn = true;
+    res.locals.username = req.session.username;
+  }
   next();
 });
 
 app.use("/", indexRouter); // route middleware from ./routes/index.js
+app.use("/api", apiRouter);
 app.use("/users", usersRouter); // route middleware from ./routes/users.js
 
 

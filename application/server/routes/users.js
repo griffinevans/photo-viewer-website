@@ -6,9 +6,14 @@ const bcrypt = require('bcrypt');
 router.post('/login', (req,res,next) => {
   const {username, password} = req.body;
 
+  let loggedUserId;
+  let loggedUsername;
+
   db.query('select id, username, password from users where username=?', [username,])
     .then( ([results, fields]) => {
       if(results && results.length == 1) {
+        loggedUserId = results[0].id;
+        loggedUsername = results[0].username;
         let dbPassword = results[0].password;
         return bcrypt.compare(password,dbPassword);
       }else{
@@ -17,6 +22,8 @@ router.post('/login', (req,res,next) => {
     })
     .then( (passwordsMatched) => {
       if(passwordsMatched) {
+        req.session.userId = loggedUserId;
+        req.session.username = loggedUsername;
         res.redirect('/');
       }else{
         throw new Error('Invalid user credentials');
