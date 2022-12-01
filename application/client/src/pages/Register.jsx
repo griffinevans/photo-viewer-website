@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 
-class Registration extends React.Component {
+class Register extends React.Component {
   render() {
     return (
       <body>
@@ -12,6 +12,7 @@ class Registration extends React.Component {
             <h1 class="title">Register</h1>
             <form id="register" class="form-field"
               method="POST"
+              action="/users/register"
               enctype="application/x-www-form-urlencoded">
 
               <label for="username"> Username: </label>
@@ -145,4 +146,4 @@ const checkAge = (cAge) => {
   return true;
 }
 
-export default Registration;
+export default Register;

@@ -6,7 +6,7 @@ class Navbar extends React.Component {
       <nav>
         <a href="/">Index</a>
         <a href="login">Login</a>
-        <a href="registration">Registration</a>
+        <a href="register">Register</a>
         <a href="postimage">Post Image</a>
         <a href="viewpost">View Post</a>
       </nav>
