@@ -12,7 +12,11 @@ class Login extends React.Component {
             <p>one day, i will return to your side</p>
           </section>
           <section class="card">
-            <form class="form-field" method="get">
+            <form id="login" class="form-field"
+              method="POST"
+              action="/users/login"
+              enctype="application/x-www-form-urlencoded">
+
               <label for="username"> Username: </label>
               <input type="text" id="username" name="username" />
               <label for="password"> Password: </label>

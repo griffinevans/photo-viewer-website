@@ -2,6 +2,22 @@ var express = require('express');
 var router = express.Router();
 const db = require('../database.js');
 
+router.post('/login', (req,res,next) => {
+  const {username, password} = req.body;
+
+  db.query('select id, username, email from users where username=? '
+    + 'AND password=?', [username,password] )
+    .then( ([results, fields]) => {
+      if(results && results.length == 1) {
+        res.redirect('/');
+      }else{
+        throw new Error('Invalid user credentials');
+      }
+    })
+    .catch( (err) => {
+      next(err);
+    })
+});
 
 router.post("/register", (req,res,next) => {
   const {username, email, password} = req.body;
@@ -15,7 +31,8 @@ router.post("/register", (req,res,next) => {
     })
     .then( ([results,fields]) =>  {
       if (results && results.length == 0) {
-        return db.execute('insert into users (username, email, password) value (?,?,?)',[username, email, password]);
+        return db.execute('insert into users (username, email,' 
+          + 'password) value (?,?,?)',[username, email, password]);
       } else {
         throw new Error('email already exists');
       }
@@ -35,9 +52,6 @@ router.post("/register", (req,res,next) => {
   //res.send();
 });
 
-router.post("/login", (req, res) => {
-  console.log(req.body);
-  res.send();
-});
+router.delete('/login');
 
 module.exports = router;
