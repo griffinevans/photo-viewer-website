@@ -16,26 +16,29 @@ function BasePage() {
       //loggedIn = user has active session token
       //loginContext = front-end display
       let loggedIn = await queryLogin();
-      if(loggedIn != loginContext) {
-        if(loggedIn) {
-          toast.success('logged in');
-        } else {
-          toast.error('logged out');
-        }
+      if(loggedIn) {
+        logoutToast();
+      } else {
+        loginToast();
       }
     }
     status();
   })
 
   return (
-    <LoginContext.Provider value={value}>
-      <div>
-        <LoginContextSwitcher />
-        <ToastContainer />
-        <PageRouter />
-      </div>
-    </LoginContext.Provider>
+    <div>
+      <LoginContextSwitcher />
+      <ToastContainer />
+      <PageRouter />
+    </div>
   );
+}
+
+function logoutToast() {
+  toast.err('logged out');
+}
+function loginToast() {
+  teast.success('logged in');
 }
 
 export default BasePage;
