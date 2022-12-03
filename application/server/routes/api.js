@@ -1,8 +1,9 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const session = require("express-session");
 
 
-router.get('/', (req, res, next) => { 
+router.get('/externalPosts', (req, res, next) => { 
     fetch('https://jsonplaceholder.typicode.com/albums/2/photos')
       .then((response) => response.json())
       .then((data) => res.send(data));

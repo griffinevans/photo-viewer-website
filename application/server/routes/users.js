@@ -70,6 +70,21 @@ router.post("/register", (req,res,next) => {
   //res.send();
 });
 
-router.delete('/login');
+router.get('/isLoggedIn', (req, res, next) => {
+  (res.locals.isLoggedIn)? res.send(true) : res.send(false);
+})
+
+router.post('/logout', (req, res, next) => {
+  req.session.destroy( (destroyError) => { 
+  if(destroyError) {
+      next(err);
+    } else {
+      res.json({
+        status: 200,
+        message: "You have been logged out"
+      });
+    }
+  });
+})
 
 module.exports = router;

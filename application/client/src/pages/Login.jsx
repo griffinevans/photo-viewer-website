@@ -7,19 +7,19 @@ class Login extends React.Component {
       <div>
         <Navbar />
         <main>
-          <section class="spacey-quote">
+          <section className="spacey-quote">
             <h1>UN JOUR JE SERAI DE RETOUR PRES DE TOI</h1>
             <p>one day, i will return to your side</p>
           </section>
-          <section class="card">
-            <form id="login" class="form-field"
+          <section className="card">
+            <form id="login" className="form-field"
               method="POST"
               action="/users/login"
-              enctype="application/x-www-form-urlencoded">
+              encType="application/x-www-form-urlencoded">
 
-              <label for="username"> Username: </label>
+              <label htmlFor="username"> Username: </label>
               <input type="text" id="username" name="username" />
-              <label for="password"> Password: </label>
+              <label htmlFor="password"> Password: </label>
               <input type="password" id="password" name="password" />
               <button>Login</button>
             </form>

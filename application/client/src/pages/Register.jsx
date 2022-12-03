@@ -4,40 +4,38 @@ import Navbar from '../components/Navbar';
 class Register extends React.Component {
   render() {
     return (
-      <body>
+      <main>
         <Navbar />
 
-        <main>
-          <section class="card">
-            <h1 class="title">Register</h1>
-            <form id="register" class="form-field"
-              method="POST"
-              action="/users/register"
-              enctype="application/x-www-form-urlencoded">
+        <section className="card">
+          <h1 className="title">Register</h1>
+          <form id="register" className="form-field"
+            method="POST"
+            action="/users/register"
+            encType="application/x-www-form-urlencoded">
 
-              <label for="username"> Username: </label>
-              <input type="text" id="username" name="username" />
-              <label for="email"> Email Address: </label>
-              <input type="email" id="email" name="email" />
-              <label for="password"> Password: </label>
-              <input type="password" id="password" name="password" />
-              <label for="confirmPassword"> Confirm Password: </label>
-              <input type="password" id="confirmPassword" name="confirmPassword" />
-              <div class="checkbox">
-                <input type="checkbox" id="confirmAge" name="confirmAge" />
-                <label for="confirmAge"> I am 13+ years old </label>
-              </div>
-              <div class="checkbox">
-                <input type="checkbox" id="tos" name="tos" />
-                <label for="tos">
-                  I accept the <a href="">TOS</a> and <a href="">Privacy Policy</a>
-                </label>
-              </div>
-              <input type="submit" id="submit" />
-            </form>
-          </section>
-        </main>
-      </body>
+            <label htmlFor="username"> Username: </label>
+            <input type="text" id="username" name="username" />
+            <label htmlFor="email"> Email Address: </label>
+            <input type="email" id="email" name="email" />
+            <label htmlFor="password"> Password: </label>
+            <input type="password" id="password" name="password" />
+            <label htmlFor="confirmPassword"> Confirm Password: </label>
+            <input type="password" id="confirmPassword" name="confirmPassword" />
+            <div className="checkbox">
+              <input type="checkbox" id="confirmAge" name="confirmAge" />
+              <label htmlFor="confirmAge"> I am 13+ years old </label>
+            </div>
+            <div className="checkbox">
+              <input type="checkbox" id="tos" name="tos" />
+              <label htmlFor="tos">
+                I accept the <a href="">TOS</a> and <a href="">Privacy Policy</a>
+              </label>
+            </div>
+            <input type="submit" id="submit" />
+          </form>
+        </section>
+      </main>
     );
   }
 

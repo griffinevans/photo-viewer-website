@@ -23,9 +23,8 @@ class Index extends React.Component {
   }
 
   componentDidMount() {
-    console.log("mounted");
     let count = document.getElementById("postCounter");
-    fetch("/api")
+    fetch("/api/externalPosts")
       .then((response) => response.json())
       .then((data) => data.forEach(file => {
         //add images and title to div
