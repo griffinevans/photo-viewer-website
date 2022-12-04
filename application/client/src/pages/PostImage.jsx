@@ -25,14 +25,15 @@ export const PostImage = () => {
       redirect: 'follow',
       body: formData
     })
-    .then( (response) => {
+      .then( (response) => {
         if(response.ok) {
           toast.success("Image posted");
+          document.getElementById("postimage").reset();
         } else {
           toast.error('Network error', {position: "top-center", theme: "colored", autoClose: 1000});
         }
       })
-    .catch( (err) => console.log(err));
+      .catch( (err) => console.log(err));
   }
 
   if(isLoggedIn) {
@@ -56,8 +57,8 @@ export const PostImage = () => {
             <div className="checkbox">
               <input type="checkbox" id="tos" name="tos" />
               <label htmlFor="tos">
-                Acknowledge you have read and understood the
-                <a href="">Acceptable Use Policy</a>
+                Acknowledge you have read and understood the 
+                <a href=""> Acceptable Use Policy</a>
               </label>
             </div>
             <button>Upload</button>

@@ -24,6 +24,7 @@ export const Login = () => {
           window.location.replace('/');
         } else {
           toast.error('Invalid credentials', {position: "top-center", theme: "colored", autoClose: 1000});
+          document.getElementById("login").reset();
         }
       })
     .catch( (err) => console.log(err));

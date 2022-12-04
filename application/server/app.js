@@ -43,9 +43,8 @@ app.use((req,res,next) => {
   next();
 });
 
-app.use("/", indexRouter); // route middleware from ./routes/index.js
-app.use("/api", apiRouter);
-app.use("/users", usersRouter); // route middleware from ./routes/users.js
+app.use("/", indexRouter);
+app.use("/users", usersRouter); 
 app.use("/posts", postsRouter);
 
 

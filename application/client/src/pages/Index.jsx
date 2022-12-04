@@ -1,70 +1,42 @@
-import React from 'react';
+import React, {useState, useEffect }from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Navbar } from '../components/Navbar';
-import '../styles/style.css';
 
-class Index extends React.Component {
-  render() {
-    return (
-      <div className="index">
-        <Header />
-        <Navbar />
-        <main id="indexMain" className="indexMain">
-          <h1 id="postCounter" className="postCounter">
-            0
-          </h1>
-          <section id="splash" className="splash">
-          </section>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
+export const Index = () => {
 
-  componentDidMount() {
-    let count = document.getElementById("postCounter");
-    fetch("/posts/getRecentPosts")
-      .then((response) => response.json())
-      .then((data) => data.forEach(file => {
-        //add images and title to div
-        let div = document.createElement("div");
-        div.classList.add("fadingTile");
+  const [posts, setPosts] = useState([]);
 
-        let img = document.createElement("img");
-        img.src = file["thumbnail"];
-        div.appendChild((img));
+  useEffect( () => {
+    fetch('/posts/getRecentPosts')
+      .then( response => response.json())
+      .then( res_json => setPosts(res_json))
+      .catch( err => console.log(err));
 
-        let title = document.createElement("p");
-        title.innerText = file["title"];
-        div.appendChild(title);
+  }, []);
 
-        document.getElementById("splash").appendChild(div);
-        count.innerText++;
-      }))
-      .then(() => {
-        const tiles = document.querySelectorAll(".fadingTile");
-        tiles.forEach( (tile) => {
-          tile.addEventListener('click', () => {
-            tile.style.opacity = 0;
-          });
-          tile.addEventListener('transitionend', () => { 
-            tile.remove();
-            count.innerText--;
-          });
-        });
-      });
-  }
+  return (
+    <div className="index">
+      <Header />
+      <Navbar />
+      <main id="indexMain" className="indexMain">
+        <section id="splash" className="splash"> 
 
-  componentWillUnmount() {
-    console.log("unmounting");
-    const tiles = document.querySelectorAll(".fadingTile");
-    tiles.forEach( (tile) => {
-      tile.remove();
-    });
-    document.getElementById("postCounter").innerText = 0;
-    console.log("unmounted");
-  }
+
+          {console.log(posts)}
+          {
+            posts.map( (post) => (
+              <a href={'/posts/'+ post["id"]} key={post.id} className="postContainer">
+                <img src={post["thumbnail"]} />
+                <p>{post["title"]}</p>
+              </a>
+            ))
+          }
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
+
 }
 
-export default Index;

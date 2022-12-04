@@ -18,15 +18,14 @@ export const Navbar = () => {
   if(isLoggedIn) {
     navbar = <nav>
       <a href="/">Index</a>
-      <a href="postimage">Post Image</a>
-      <a href="viewpost">View Post</a>
+      <a href="/postimage">Post Image</a>
       <a className="logout" href="/" onClick={e => logOut(e)}>Log out</a>
     </nav>
   } else {
     navbar = <nav>
       <a href="/">Index</a>
-      <a href="login">Login</a>
-      <a href="register">Register</a>
+      <a href="/login">Login</a>
+      <a href="/register">Register</a>
     </nav>
   }
 

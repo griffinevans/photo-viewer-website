@@ -6,7 +6,7 @@ export const Forbidden = () => {
     <div>
       <Header />
       <Navbar />
-      <main>
+      <main className="forbiddenMain">
         <h1>401 forbidden</h1>
       </main>
       <Footer />

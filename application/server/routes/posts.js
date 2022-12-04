@@ -32,12 +32,9 @@ router.post("/create", upload.single("uploadImage"), (req, res, next) => {
       return db.query(baseSql,[title,description,uploadedFile,thumbnailDestination,userId]);
     })
     .then( ([results,fields]) => {
-      if(results && results.affectetdRows) {
-        req.session.save( (saveErr) => {
-          res.redirect('/');
+      req.session.save( (saveErr) => {
           res.send();
-        })
-      }
+      })
     })
     .catch( (err) => next(err));
 });
@@ -48,6 +45,17 @@ router.get("/getRecentPosts", (req, res, next) => {
       if(results && results.length) {
         res.locals.results = results;
         res.send(results);
+      }
+  })
+    .catch(err => next(err));
+})
+
+router.get('/:id', (req, res, next) => {
+  db.query(`select * from posts where ID = ${req.params.id} limit 1`)
+    .then( ([results, fields]) => {
+      if(results && results.length) {
+        res.locals.results = results[0];
+        res.send(results[0]);
       }
   })
     .catch(err => next(err));

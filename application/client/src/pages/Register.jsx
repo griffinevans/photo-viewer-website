@@ -32,7 +32,7 @@ class Register extends React.Component {
                 I accept the <a href="">TOS</a> and <a href="">Privacy Policy</a>
               </label>
             </div>
-            <input type="submit" id="submit" />
+            <button type="submit" id="submit">Submit</button>
           </form>
         </section>
       </main>
