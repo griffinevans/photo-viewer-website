@@ -11,6 +11,7 @@ const MySQLStore = require("express-mysql-session")(session);
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const apiRouter = require("./routes/api.js");
+const postsRouter = require("./routes/posts.js");
 
 const app = express();
 
@@ -45,6 +46,7 @@ app.use((req,res,next) => {
 app.use("/", indexRouter); // route middleware from ./routes/index.js
 app.use("/api", apiRouter);
 app.use("/users", usersRouter); // route middleware from ./routes/users.js
+app.use("/posts", postsRouter);
 
 
 /**

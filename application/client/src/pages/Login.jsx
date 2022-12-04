@@ -1,33 +1,61 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
+import { Navbar } from '../components/Navbar';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-class Login extends React.Component {
-  render() {
-    return (
-      <div>
-        <Navbar />
-        <main>
-          <section className="spacey-quote">
-            <h1>UN JOUR JE SERAI DE RETOUR PRES DE TOI</h1>
-            <p>one day, i will return to your side</p>
-          </section>
-          <section className="card">
-            <form id="login" className="form-field"
-              method="POST"
-              action="/users/login"
-              encType="application/x-www-form-urlencoded">
+export const Login = () => {
 
-              <label htmlFor="username"> Username: </label>
-              <input type="text" id="username" name="username" />
-              <label htmlFor="password"> Password: </label>
-              <input type="password" id="password" name="password" />
-              <button>Login</button>
-            </form>
-          </section>
-        </main>
-      </div>
-    );
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = new URLSearchParams(new FormData(document.getElementById("login")));
+
+    fetch('/users/login', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      method: 'POST',
+      redirect: 'follow',
+      body: data
+    })
+    .then( (response) => {
+        if(response.ok) {
+          toast.success("Logged in");
+          window.location.replace('/');
+        } else {
+          toast.error('Invalid credentials', {position: "top-center", theme: "colored", autoClose: 1000});
+        }
+      })
+    .catch( (err) => console.log(err));
   }
+
+  return (
+    <div>
+      <Navbar />
+      <ToastContainer />
+      <main>
+        <section className="spacey-quote">
+          <h1>UN JOUR JE SERAI DE RETOUR PRES DE TOI</h1>
+          <p>one day, i will return to your side</p>
+        </section>
+        <section className="card">
+          <form id="login" className="form-field" onSubmit={handleSubmit}>
+            <label htmlFor="username"> Username: </label>
+            <input type="text" id="username" name="username" />
+            <label htmlFor="password"> Password: </label>
+            <input type="password" id="password" name="password" />
+            <button>Login</button>
+          </form>
+        </section>
+      </main>
+    </div>
+  );
 }
 
-export default Login;
+/*
+           <form id="login" className="form-field" 
+            action='/users/login'
+            method="POST"
+            encType='application/x-www-form-urlencoded'
+          >
+*/

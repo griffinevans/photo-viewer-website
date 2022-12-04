@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Logout from '../components/Logout.jsx';
 import { queryLogin } from '../api/protectors.js';
+import { ToastContainer, toast } from 'react-toastify';
 
-function Navbar() {
+export const Navbar = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -20,7 +20,7 @@ function Navbar() {
       <a href="/">Index</a>
       <a href="postimage">Post Image</a>
       <a href="viewpost">View Post</a>
-      <Logout />
+      <a className="logout" href="/" onClick={e => logOut(e)}>Log out</a>
     </nav>
   } else {
     navbar = <nav>
@@ -37,4 +37,15 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+async function logOut(e) {
+  e.preventDefault();
+  fetch('/users/logout', {
+    method: 'POST',
+  })
+    .then( (response) => response.json())
+    .then( (res_json) => {
+      window.location.replace('/');
+    })
+    .then( () => toast.error("logged out"))
+    .catch( (err) => console.log(err));
+}

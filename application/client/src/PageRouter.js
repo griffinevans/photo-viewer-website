@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Index from './pages/Index';
-import Login from './pages/Login';
-import PostImage from './pages/PostImage';
+import { Login } from './pages/Login';
+import { PostImage } from './pages/PostImage';
 import Register from './pages/Register';
-import ViewPost from './pages/ViewPost';
+import { ViewPost } from './pages/ViewPost';
 
 function AppRouter() {
   return(

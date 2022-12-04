@@ -66,7 +66,7 @@ async function makePostsTable(connection) {
       image VARCHAR(4096) NOT NULL,
       thumbnail VARCHAR(4096) NOT NULL,
       fk_authorId INT NOT NULL,
-      createdAt DATETIME NOT NULL,
+      createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
       PRIMARY KEY (id),
       INDEX postauthor_idx (fk_authorId ASC) VISIBLE,
       CONSTRAINT postauthor

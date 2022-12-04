@@ -17,6 +17,7 @@ router.post('/login', (req,res,next) => {
         let dbPassword = results[0].password;
         return bcrypt.compare(password,dbPassword);
       }else{
+        res.send(401, 'Invalid user credentials');
         throw new Error('Invalid user credentials');
       }
     })
@@ -26,6 +27,7 @@ router.post('/login', (req,res,next) => {
         req.session.username = loggedUsername;
         res.redirect('/');
       }else{
+        res.send(401, 'Invalid user credentials');
         throw new Error('Invalid user credentials');
       }
     })
@@ -66,8 +68,6 @@ router.post("/register", (req,res,next) => {
       res.redirect('/register');
       next(err);
     });
-  console.log(req.body);
-  //res.send();
 });
 
 router.get('/isLoggedIn', (req, res, next) => {

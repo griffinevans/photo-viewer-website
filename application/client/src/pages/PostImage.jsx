@@ -1,28 +1,61 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
+import React, { useState, useEffect } from 'react';
+import { Navbar } from '../components/Navbar';
+import { queryLogin } from '../api/protectors.js';
+import { Forbidden } from './Forbidden.jsx';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-class PostImage extends React.Component {
-  render() {
+export const PostImage = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect( () => {
+    const status = async () => {
+      setIsLoggedIn(await queryLogin());
+    }
+
+    status();
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(document.getElementById("postimage"));
+
+    fetch('/posts/create', {
+      method: 'POST',
+      redirect: 'follow',
+      body: formData
+    })
+    .then( (response) => {
+        if(response.ok) {
+          toast.success("Image posted");
+        } else {
+          toast.error('Network error', {position: "top-center", theme: "colored", autoClose: 1000});
+        }
+      })
+    .catch( (err) => console.log(err));
+  }
+
+  if(isLoggedIn) {
     return(
       <div>
         <Navbar />
-        <section class="card">
+        <section className="card">
           <h1>Upload Image</h1>
-          <form class="form-field">
-            <label for="title"> Post title </label>
+          <form id="postimage" className="form-field" onSubmit={handleSubmit}>
+            <label htmlFor="title"> Post title </label>
             <input type="text" id="title" name="title" />
             <label> Post description </label>
             <input type="text" name="description" />
-            <label for="image"> Choose a picture: </label>
+            <label htmlFor="image"> Choose a picture: </label>
             <input
               type="file"
-              id="image"
-              name="image"
+              id="uploadImage"
+              name="uploadImage"
               accept="image/png, image/jpeg, image/webp"
-            />
-            <div class="checkbox">
+              />
+            <div className="checkbox">
               <input type="checkbox" id="tos" name="tos" />
-              <label for="tos">
+              <label htmlFor="tos">
                 Acknowledge you have read and understood the
                 <a href="">Acceptable Use Policy</a>
               </label>
@@ -32,7 +65,10 @@ class PostImage extends React.Component {
         </section>
       </div>
     );
+  } else {
+    return (
+      <Forbidden />
+    );
   }
 }
 
-export default PostImage;
