@@ -6,7 +6,6 @@ const sharp = require('sharp');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    console.log(file);
     cb(null, 'public/images/uploads')
   },
   filename: function(req, file, cb) {
@@ -33,14 +32,25 @@ router.post("/create", upload.single("uploadImage"), (req, res, next) => {
       return db.query(baseSql,[title,description,uploadedFile,thumbnailDestination,userId]);
     })
     .then( ([results,fields]) => {
-      console.log(results);
       if(results && results.affectetdRows) {
         req.session.save( (saveErr) => {
           res.redirect('/');
+          res.send();
         })
       }
     })
     .catch( (err) => next(err));
 });
+
+router.get("/getRecentPosts", (req, res, next) => {
+  db.query('select id,title,description,thumbnail from posts ORDER BY createdAt DESC LIMIT 100')
+    .then( ([results, fields]) => {
+      if(results && results.length) {
+        res.locals.results = results;
+        res.send(results);
+      }
+  })
+    .catch(err => next(err));
+})
 
 module.exports = router;

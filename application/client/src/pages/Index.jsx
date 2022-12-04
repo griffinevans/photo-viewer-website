@@ -24,7 +24,7 @@ class Index extends React.Component {
 
   componentDidMount() {
     let count = document.getElementById("postCounter");
-    fetch("/api/externalPosts")
+    fetch("/posts/getRecentPosts")
       .then((response) => response.json())
       .then((data) => data.forEach(file => {
         //add images and title to div
@@ -32,7 +32,7 @@ class Index extends React.Component {
         div.classList.add("fadingTile");
 
         let img = document.createElement("img");
-        img.src = file["url"];
+        img.src = file["thumbnail"];
         div.appendChild((img));
 
         let title = document.createElement("p");
@@ -54,6 +54,16 @@ class Index extends React.Component {
           });
         });
       });
+  }
+
+  componentWillUnmount() {
+    console.log("unmounting");
+    const tiles = document.querySelectorAll(".fadingTile");
+    tiles.forEach( (tile) => {
+      tile.remove();
+    });
+    document.getElementById("postCounter").innerText = 0;
+    console.log("unmounted");
   }
 }
 
