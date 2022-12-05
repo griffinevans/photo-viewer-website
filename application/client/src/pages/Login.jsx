@@ -9,7 +9,7 @@ export const Login = () => {
     e.preventDefault();
     const data = new URLSearchParams(new FormData(document.getElementById("login")));
 
-    fetch('/users/login', {
+    fetch('/api/users/login', {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/x-www-form-urlencoded'

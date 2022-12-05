@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { queryLogin } from '../api/protectors.js';
 import { ToastContainer, toast } from 'react-toastify';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 export const Navbar = () => {
 
@@ -38,7 +39,7 @@ export const Navbar = () => {
 
 async function logOut(e) {
   e.preventDefault();
-  fetch('/users/logout', {
+  fetch('/api/users/logout', {
     method: 'POST',
   })
     .then( (response) => response.json())

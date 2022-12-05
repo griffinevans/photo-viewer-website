@@ -26,7 +26,7 @@ export const ViewPost = (props) => {
   //load post if authenticated (runs whenever auth is updated)
   useEffect( () => {
     if(auth) {
-      fetch(`/posts/${postId}`)
+      fetch(`/api/posts/${postId}`)
         .then( response => response.json() )
         .then( res_json => setPost(res_json) )
         .catch( err => console.log(err) );

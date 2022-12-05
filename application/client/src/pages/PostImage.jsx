@@ -20,7 +20,7 @@ export const PostImage = () => {
     e.preventDefault();
     const formData = new FormData(document.getElementById("postimage"));
 
-    fetch('/posts/create', {
+    fetch('/api/posts/create', {
       method: 'POST',
       redirect: 'follow',
       body: formData
