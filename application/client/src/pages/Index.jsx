@@ -3,7 +3,6 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Navbar } from '../components/Navbar';
 import { queryLogin } from '../api/protectors.js';
-import { Colcade } from 'colcade';
 
 export const Index = () => {
 
@@ -19,17 +18,9 @@ export const Index = () => {
     fetch('/posts/getRecentPosts')
       .then( response => response.json())
       .then( res_json => setPosts(res_json))
-      .then( () => {
-        let colc = new Colcade( '.grid', {
-          columns: '.grid-col',
-          items: '.grid-item'
-        });
-      })
       .catch( err => console.log(err));
 
   }, []);
-
-  let count = 0;
 
   return (
     <div className="index">
