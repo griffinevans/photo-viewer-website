@@ -29,7 +29,8 @@ export const Index = () => {
       window.location.href=`posts/${postId}`;
     } 
     else {
-      toast.error('You must be logged in to view posts', {position: "top-center", theme: "colored", autoClose: 1000});
+      toast.error('You must be logged in to view posts');
+      toast.clearWaitingQueue();
     }
   }
 

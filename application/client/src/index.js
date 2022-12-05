@@ -13,7 +13,16 @@ import { ToastContainer } from 'react-toastify';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ToastContainer />
+    <ToastContainer
+    position="top-center"
+    autoClose={1000}
+    limit={1}
+    hideProgressBar
+    closeOnClick
+    draggable={false}
+    pauseOnHover
+    theme="colored"
+    />
     <BrowserRouter>
       <Routes>
         <Route path="/" element={ <Index /> } />

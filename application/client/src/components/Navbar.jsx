@@ -46,6 +46,5 @@ async function logOut(e) {
     .then( (res_json) => {
       window.location.replace('/');
     })
-    .then( () => toast.error("logged out"))
     .catch( (err) => console.log(err));
 }

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Navbar } from '../components/Navbar.jsx';
 import { queryLogin } from '../api/protectors.js';
 import { useParams } from 'react-router-dom';
+import Header from '../components/Header.jsx';
+import Footer from '../components/Footer.jsx';
 
 export const ViewPost = (props) => {
 
@@ -35,13 +37,16 @@ export const ViewPost = (props) => {
 
   return (
     <div>
+      <Header />
       <Navbar />
       <main>
-        <section className="card">
-          <h2>{post["title"]}</h2>
-          <p>{post["description"]}</p>
-          <p className="author">{post["username"]}</p>
-          <p>{post["createdAt"].slice(0,10)}</p>
+        <section className="viewPostCard">
+          <div className="viewPostText">
+            <h2 className="title">{post["title"]}</h2>
+            <p className="description">{post["description"]}</p>
+            <p className="author">{post["username"]}</p>
+            <p className="date">{post["createdAt"].slice(0,10)}</p>
+          </div>
           <img src={post["image"]} />
         </section>
       </main>

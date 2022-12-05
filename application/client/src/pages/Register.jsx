@@ -11,7 +11,7 @@ class Register extends React.Component {
           <h1 className="title">Register</h1>
           <form id="register" className="form-field"
             method="POST"
-            action="/users/register"
+            action="/api/users/register"
             encType="application/x-www-form-urlencoded">
 
             <label htmlFor="username"> Username: </label>
@@ -23,11 +23,11 @@ class Register extends React.Component {
             <label htmlFor="confirmPassword"> Confirm Password: </label>
             <input type="password" id="confirmPassword" name="confirmPassword" />
             <div className="checkbox">
-              <input type="checkbox" id="confirmAge" name="confirmAge" />
+              <input required type="checkbox" id="confirmAge" name="confirmAge" />
               <label htmlFor="confirmAge"> I am 13+ years old </label>
             </div>
             <div className="checkbox">
-              <input type="checkbox" id="tos" name="tos" />
+              <input required type="checkbox" id="tos" name="tos" />
               <label htmlFor="tos">
                 I accept the <a href="">TOS</a> and <a href="">Privacy Policy</a>
               </label>
@@ -42,21 +42,19 @@ class Register extends React.Component {
   componentDidMount() {
     const regForm = document.forms[0];
     const submit = document.getElementById("submit");
-    //submit.addEventListener("click",validate);
+    submit.addEventListener("click",validate);
 
     function validate(e) {
-      /*
-const username = document.getElementById("username");
-const pass = document.getElementById("password");
-const cpass = document.getElementById("confirmPassword");
-const email = document.getElementById("email");
-const cAge = document.getElementById("confirmAge");
-const tos = document.getElementById("tos");
+      const username = document.getElementById("username");
+      const pass = document.getElementById("password");
+      const cpass = document.getElementById("confirmPassword");
+      const email = document.getElementById("email");
+      const cAge = document.getElementById("confirmAge");
+      const tos = document.getElementById("tos");
 
-if( !checkUsername(username) || !checkPassword(pass,cpass) || !checkEmail(email) || !checkAge(cAge) || !checkTOS(tos)) {
-e.preventDefault();
-} 
-*/
+      if( !checkUsername(username) || !checkPassword(pass,cpass) || !checkEmail(email) || !checkAge(cAge) || !checkTOS(tos)) {
+        e.preventDefault();
+      } 
     }
   }
 }

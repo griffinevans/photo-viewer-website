@@ -8,9 +8,9 @@ const PORT = process.env.PORT || 3001;
 const session = require("express-session");
 const MySQLStore = require("express-mysql-session")(session);
 
-const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const postsRouter = require("./routes/posts.js");
+const commentsRouter = require("./routes/comments.js");
 
 const app = express();
 
@@ -43,9 +43,9 @@ app.use((req,res,next) => {
   next();
 });
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter); 
-app.use("/posts", postsRouter);
+app.use("/api/users", usersRouter); 
+app.use("/api/posts", postsRouter);
+app.use("/api/comments", commentsRouter);
 
 
 /**

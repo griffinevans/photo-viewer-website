@@ -20,10 +20,16 @@ export const Login = () => {
     })
     .then( (response) => {
         if(response.ok) {
-          toast.success("Logged in");
           window.location.replace('/');
         } else {
-          toast.error('Invalid credentials', {position: "top-center", theme: "colored", autoClose: 1000});
+          console.log(response);
+          if(response.status == 401) {
+            toast.error('Invalid credentials');
+          }
+          else {
+            toast.error('Error connecting to server');
+          }
+          toast.clearWaitingQueue();
           document.getElementById("login").reset();
         }
       })
@@ -33,7 +39,6 @@ export const Login = () => {
   return (
     <div>
       <Navbar />
-      <ToastContainer />
       <main>
         <section className="spacey-quote">
           <h1>UN JOUR JE SERAI DE RETOUR PRES DE TOI</h1>
