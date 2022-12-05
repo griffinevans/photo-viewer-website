@@ -4,6 +4,9 @@ import { queryLogin } from '../api/protectors.js';
 import { useParams } from 'react-router-dom';
 
 export const ViewPost = (props) => {
+
+  const { postId } = useParams();
+  const [auth, setAuth] = useState(false);
   const [post, setPost] = useState({
     title: "",
     description: "",
@@ -12,21 +15,23 @@ export const ViewPost = (props) => {
     thumbnail: ""
   });
 
-  const { postId } = useParams();
-
+  //on page load, check if user is logged in
   useEffect( () => {
     const runLoginQuery = async () => {
-      return (await queryLogin());
+      setAuth(await queryLogin());
     }
     runLoginQuery();
+  },[]);
 
-    if(runLoginQuery()) {
+  //load post if authenticated (runs whenever auth is updated)
+  useEffect( () => {
+    if(auth) {
       fetch(`/posts/${postId}`)
         .then( response => response.json() )
         .then( res_json => setPost(res_json) )
         .catch( err => console.log(err) );
     }
-  },[]);
+  },[auth]);
 
   return (
     <div>
