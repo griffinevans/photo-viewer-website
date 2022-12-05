@@ -11,10 +11,10 @@ export const ViewPost = (props) => {
   const { postId } = useParams();
 
   useEffect( () => {
-    const status = async () => {
+    const runLoginQuery = async () => {
       setIsLoggedIn(await queryLogin());
     }
-    status();
+    runLoginQuery();
 
     fetch(`/posts/${postId}`)
       .then( response => response.json() )
@@ -28,12 +28,11 @@ export const ViewPost = (props) => {
         <Navbar />
         <main>
           <section className="card">
-            <div>
               <h2>{post["title"]}</h2>
               <p>{post["description"]}</p>
-              <p>{post["createdAt"]}</p>
+              <p className="author">{post["username"]}</p>
+              <p>{post["createdAt"].slice(0,10)}</p>
               <img src={post["thumbnail"]} />
-            </div>
           </section>
         </main>
       </div>

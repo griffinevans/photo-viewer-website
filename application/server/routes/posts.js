@@ -28,12 +28,12 @@ router.post("/create", upload.single("uploadImage"), (req, res, next) => {
     .toFile(thumbnailDestination)
     .then( () => {
       let baseSql = `INSERT INTO posts (title, description, image, thumbnail, fk_authorId)`
-      + ` VALUE (?,?,?,?,?)`
+        + ` VALUE (?,?,?,?,?)`
       return db.query(baseSql,[title,description,uploadedFile,thumbnailDestination,userId]);
     })
     .then( ([results,fields]) => {
       req.session.save( (saveErr) => {
-          res.send();
+        res.send();
       })
     })
     .catch( (err) => next(err));
@@ -46,18 +46,19 @@ router.get("/getRecentPosts", (req, res, next) => {
         res.locals.results = results;
         res.send(results);
       }
-  })
+    })
     .catch(err => next(err));
 })
 
 router.get('/:id', (req, res, next) => {
-  db.query(`select * from posts where ID = ${req.params.id} limit 1`)
+  db.query(`SELECT title, posts.id, description, image, thumbnail, users.createdAt, username FROM `
+    + `csc317db.posts LEFT JOIN users on posts.fk_authorId = users.id WHERE posts.id = ${req.params.id};`)
     .then( ([results, fields]) => {
       if(results && results.length) {
         res.locals.results = results[0];
         res.send(results[0]);
       }
-  })
+    })
     .catch(err => next(err));
 })
 

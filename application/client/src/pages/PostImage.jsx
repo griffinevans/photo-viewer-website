@@ -9,11 +9,11 @@ export const PostImage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect( () => {
-    const status = async () => {
+    const runLoginQuery = async () => {
       setIsLoggedIn(await queryLogin());
     }
 
-    status();
+    runLoginQuery();
   });
 
   const handleSubmit = (e) => {

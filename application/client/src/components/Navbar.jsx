@@ -7,11 +7,11 @@ export const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect( () => {
-    const status = async () => {
+    const runLoginQuery = async () => {
       setIsLoggedIn(await queryLogin());
     }
 
-    status();
+    runLoginQuery();
   });
 
   let navbar;
