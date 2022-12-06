@@ -40,7 +40,6 @@ class Register extends React.Component {
   }
 
   componentDidMount() {
-    const regForm = document.forms[0];
     const submit = document.getElementById("submit");
     submit.addEventListener("click",validate);
 
@@ -90,7 +89,7 @@ const checkPassword = (pass, cpass) => {
   const cpwd = cpass.value;
   let valid = false;
   //at least one uppercase letter, digit, and special char
-  const regex = `/(?=.*\d)(?=.*[A-Z])(?=.*[/*-+!@#$^&~\[\]])/`;
+  const regex = `/(?=.*d)(?=.*[A-Z])(?=.*[/*-+!@#$^&~[]])/`;
   const minLength = 8;
   let errorMsg = "";
   if (pwd.length < minLength) {

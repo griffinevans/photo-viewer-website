@@ -57,11 +57,3 @@ export const Login = () => {
     </div>
   );
 }
-
-/*
-           <form id="login" className="form-field" 
-            action='/users/login'
-            method="POST"
-            encType='application/x-www-form-urlencoded'
-          >
-*/

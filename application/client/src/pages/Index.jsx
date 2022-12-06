@@ -5,6 +5,8 @@ import { Forbidden } from './Forbidden.jsx';
 import { Navbar } from '../components/Navbar';
 import { queryLogin } from '../api/protectors.js';
 import { toast } from 'react-toastify';
+import { Search } from 'react-feather';
+
 const fuzzysort = require('fuzzysort');
 
 export const Index = () => {
@@ -54,25 +56,29 @@ export const Index = () => {
   }
 
   return (
-    <div className="index">
+    <div>
       <Header />
       <Navbar posts={posts} />
       <main id="indexMain" className="indexMain">
-        <input type="text" className="searchPosts" placeholder="Search posts" onChange={e => setSearchTerm(e.target.value)}/>
-        <section id="splash" className="splash"> 
-          {
-          posts.filter(post => filterPost(post)).map( (post) => (
-            <div onClick={() => goToPage(post["id"])} key={post.id} className="postContainer">
-              <div className = "postContents">
-                <img src={post["thumbnail"]} />
-                <p>{post["title"]}</p>
+        <div className="searchBox">
+          <Search />
+          <input type="text" className="searchPosts" placeholder="Search posts" onChange={e => setSearchTerm(e.target.value)}/>
+        </div>
+        <div className="index">
+          <section id="splash" className="splash"> 
+            {
+            posts.filter(post => filterPost(post)).map( (post) => (
+              <div onClick={() => goToPage(post["id"])} key={post.id} className="postContainer">
+                <div className = "postContents">
+                  <img src={post["thumbnail"]} />
+                  <p>{post["title"]}</p>
+                </div>
               </div>
-            </div>
-          ))
-          }
-        </section>
+            ))
+            }
+          </section>
+        </div>
       </main>
-      <Footer />
     </div>
   );
 

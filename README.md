@@ -25,4 +25,3 @@ Please follow the instructions below and fill in the information requested when 
 ## Run Instructions
 
 1. run `npm start` in both client **AND** server folders
-2. steps here

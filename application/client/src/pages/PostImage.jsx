@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Navbar } from '../components/Navbar';
 import { queryLogin } from '../api/protectors.js';
 import { Forbidden } from './Forbidden.jsx';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const PostImage = () => {
@@ -19,7 +19,6 @@ export const PostImage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(document.getElementById("postimage"));
-    console.log(formData);
 
     if(formData.get("uploadImage").size > 10000000) {
       toast.error("File cannot be larger than 10mb");
