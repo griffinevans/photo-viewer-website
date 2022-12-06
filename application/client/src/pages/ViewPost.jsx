@@ -43,9 +43,9 @@ export const ViewPost = (props) => {
         <section className="viewPostCard">
           <div className="viewPostText">
             <h2 className="title">{post["title"]}</h2>
-            <p className="description">{post["description"]}</p>
             <p className="author">{post["username"]}</p>
             <p className="date">{post["createdAt"].slice(0,10)}</p>
+            <p className="description">{post["description"]}</p>
           </div>
           <img src={post["image"]} />
         </section>

@@ -3,7 +3,7 @@ import { queryLogin } from '../api/protectors.js';
 import { ToastContainer, toast } from 'react-toastify';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-export const Navbar = () => {
+export const Navbar = (props) => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -13,7 +13,7 @@ export const Navbar = () => {
     }
 
     runLoginQuery();
-  });
+  },[]);
 
   let navbar;
   if(isLoggedIn) {
