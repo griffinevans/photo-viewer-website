@@ -40,7 +40,8 @@ router.post("/create", upload.single("uploadImage"), (req, res, next) => {
 });
 
 router.get("/getRecentPosts", (req, res, next) => {
-  db.query('select id,title,description,thumbnail from posts ORDER BY createdAt DESC LIMIT 100')
+  db.query('SELECT title, posts.id, description, image, thumbnail, posts.createdAt, username FROM '
+    + 'csc317db.posts LEFT JOIN users on posts.fk_authorId = users.id ORDER BY createdAt DESC LIMIT 100')
     .then( ([results, fields]) => {
       if(results && results.length) {
         res.locals.results = results;
