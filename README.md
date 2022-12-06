@@ -18,10 +18,11 @@ Please follow the instructions below and fill in the information requested when 
 
 ## Build Instructions
 
-1. steps here
-2. steps here
+1. Install nodejs, mysql
+2. in **server**, run `npm install && npm run builddb`
+3. in **client**, run `npm install`
 
 ## Run Instructions
 
-1. steps here
+1. run `npm start` in both client **AND** server folders
 2. steps here
