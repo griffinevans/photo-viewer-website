@@ -38,13 +38,16 @@ export const ViewPost = (props) => {
       fetch(`/api/comments/${postId}`)
         .then( response => response.json() )
         .then( res_json => setComments(res_json) )
+        .then( () => console.log(comments))
         .catch( err => console.log(err) );
     }
   },[auth]);
 
   const postComment = (e) => {
-    const commentBody = new FormData(document.getElementById("commentForm"));
+    e.preventDefault();
+    const commentBody = new URLSearchParams(new FormData(document.getElementById("commentForm")));
     console.log(commentBody);
+
     fetch(`/api/comments/${postId}`, {
       method: 'POST',
       body: commentBody
@@ -52,7 +55,7 @@ export const ViewPost = (props) => {
       .then( (response) => {
         if(response.ok) {
           toast.success("Comment posted");
-          document.getElementById("commentInput").reset();
+          document.getElementById("commentForm").reset();
         } else {
           toast.error('Error posting comment');
         }
@@ -78,15 +81,15 @@ export const ViewPost = (props) => {
           <img src={post["image"]} />
         </section>
         <section className="commentBox">
-          <form id="commentForm" className="commentForm">
-            <input type="text" name="commentInput" id="commentInput" className="commentInput" />
-            <Send type="submit" onClick={postComment}/>
+          <form id="commentForm" className="commentForm" onSubmit={e => postComment(e)}>
+            <input type="text" name="commentInput" id="commentInput" className="commentInput" required />
+            <Send type="submit" onClick={e => postComment(e)} />
           </form>
           {
-          comments.map( (comment) => (
-            <div className = "comment">
+          comments.map( comment => (
+            <div className="comment" key={comment["id"]}>
               <h1 className="author">
-                {comment["author"]}
+                {comment["username"]}
               </h1>
               <p className="date">
                 {comment["createdAt"]}
@@ -96,7 +99,7 @@ export const ViewPost = (props) => {
               </p>
             </div>
           ))
-        }
+          }
         </section>
       </main>
     </div>

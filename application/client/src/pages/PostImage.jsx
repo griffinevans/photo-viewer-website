@@ -30,6 +30,7 @@ export const PostImage = () => {
       throw new Error("No post title");
     }
 
+    console.log(formData);
     fetch('/api/posts/create', {
       method: 'POST',
       redirect: 'follow',

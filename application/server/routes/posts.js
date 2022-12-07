@@ -49,7 +49,7 @@ router.get("/getRecentPosts", (req, res, next) => {
       }
     })
     .catch(err => next(err));
-})
+});
 
 router.get('/:id', (req, res, next) => {
   db.query(`SELECT title, posts.id, description, image, thumbnail, users.createdAt, username FROM `
@@ -61,6 +61,6 @@ router.get('/:id', (req, res, next) => {
       }
     })
     .catch(err => next(err));
-})
+});
 
 module.exports = router;
