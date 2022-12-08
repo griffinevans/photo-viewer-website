@@ -4,9 +4,8 @@ const db = require('../database.js');
 
 router.get('/:id', (req, res, next) => {
   db.query(`SELECT text, comments.id, fk_authorId, comments.createdAt, username FROM csc317db.comments`
-    + ` JOIN csc317db.users ON comments.fk_authorId = users.id WHERE fk_postId = ${req.params.id};`)
+    + ` JOIN csc317db.users ON comments.fk_authorId = users.id WHERE fk_postId = ${req.params.id} ORDER BY createdAt`)
     .then( ([results, fields]) => {
-      console.log(results);
       if(results && results.length) {
         res.locals.results = results;
         res.send(results);

@@ -257,6 +257,46 @@ footer {
   justify-content: center;
 }
 
+.commentBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.commentBox > * {
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+}
+
+.commentForm {
+  margin-top: 1%;
+  background-color: var(--darkorange);
+  padding: 0.5%;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.commentInput {
+  height: 50px;
+  width: 300px;
+}
+
+.commentAuthor {
+  font-size: 16px;
+  float: left;
+  margin-right: 10px;
+}
+
+.submitComment { 
+  float: right;
+  height: 30px;
+  width: 30px;
+  margin: 0.5rem;
+}
+
 @keyframes slideIn {
   0% {
     transform: translateY(-10%);
