@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { queryLogin } from '../api/protectors.js';
-import { ToastContainer, toast } from 'react-toastify';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 export const Navbar = (props) => {
 

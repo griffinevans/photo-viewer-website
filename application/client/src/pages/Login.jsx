@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar } from '../components/Navbar';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const Login = () => {
@@ -23,7 +23,7 @@ export const Login = () => {
           window.location.replace('/');
         } else {
           console.log(response);
-          if(response.status == 401) {
+          if(response.status === 401) {
             toast.error('Invalid credentials');
           }
           else {

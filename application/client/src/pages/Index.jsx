@@ -1,7 +1,5 @@
 import React, {useState, useEffect }from 'react';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { Forbidden } from './Forbidden.jsx';
 import { Navbar } from '../components/Navbar';
 import { queryLogin } from '../api/protectors.js';
 import { toast } from 'react-toastify';
@@ -13,7 +11,6 @@ export const Index = () => {
 
   const [posts, setPosts] = useState([]);
   const [auth, setAuth] = useState(false);
-  const [filteredPosts, setFilteredPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect( () => {
