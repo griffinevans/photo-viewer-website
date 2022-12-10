@@ -69,6 +69,7 @@ export const ViewPost = (props) => {
     <div>
       <Header />
       <Navbar />
+      {auth &&
       <main>
         <section className="viewPostCard">
           <div className="viewPostText">
@@ -101,6 +102,7 @@ export const ViewPost = (props) => {
         }
         </section>
       </main>
+      }
     </div>
   );
 }
